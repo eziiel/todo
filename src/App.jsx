@@ -1,11 +1,18 @@
 
+import { ProviderContext } from "./components/context/contextTheme"
+import { TodoMain } from "./components/mainPage/todoMain"
+import { GlobalStyled } from "./components/styled/globalStyled"
+
 const App = () => {
 
 
   return(
-    <h1>
-      boa tarde grupo""
-    </h1>
+    <>
+      <ProviderContext>
+      <TodoMain/>
+      </ProviderContext>
+      
+    </>
   )
 }
 
