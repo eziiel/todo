@@ -6,9 +6,10 @@ import { ContextTheme } from "../context/contextTheme"
 // import styled from "styled-components"
 
 
-function pixelConfig(item) {
-  item = item/16 + "rem"
-  return item
+function pixelsToRem (...values) {
+  return values
+      .reduce((a,i) => (a += i/16 + `rem `),"")
+      .trim();
 }
 
 const GlobalStyled = createGlobalStyle`
@@ -28,7 +29,7 @@ const GlobalStyled = createGlobalStyle`
   --dark-blue3: #777a92;
   --dark-blue4: #4d5066;
   --dark-blue4: #4d5066;
-  --daek-blue4: #393a4c;
+  --dark-blue4: #393a4c;
 
   --light-blue: #cacde8;
   --light-blue2: #e4e5f1;
@@ -39,6 +40,8 @@ const GlobalStyled = createGlobalStyle`
   --light3:#d2d3db;
   --dark-blue-light:#9394a5;
   --dark-blue-light2:#484b6a;
+
+  
 }
 
 body{

@@ -3,15 +3,16 @@ import bgDesktopDark from "../../images/bg-desktop-dark.jpg"
 import bgMobileDark from "../../images/bg-mobile-dark.jpg"
 
 
-function pixelConfig(item) {
-  item = item/16 + "rem"
-  return item
+function pixelsToRem (...values) {
+  return values
+      .reduce((a,i) => (a += i/16 + `rem `),"")
+      .trim();
 }
 
 const BackgroundDesktop = styled.div`
 
 width: 100% ;
-height: ${pixelConfig(300)};
+height: ${pixelsToRem(300)};
 background: var(--dark-blue) url(${bgDesktopDark}) top no-repeat;
 background-size: cover;
 
