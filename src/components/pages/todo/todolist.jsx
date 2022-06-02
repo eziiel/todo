@@ -1,43 +1,42 @@
 import React from 'react'
 import { ContextTheme } from '../../context/contextTheme'
 import { ButtonDelete } from '../../styled/buttonStyled'
-import { Todo, TodoList } from '../../styled/mainTodoStyled'
+import { Li, Ul } from '../../styled/ulStyled'
 import { InputCheck } from '../utils/inputCheck'
 
 export const Todolist = () => {
-  const {theme,todos} = React.useContext(ContextTheme)
-  const [status, setStatus] = React.useState(false)
+  const {theme,todos,todoId} = React.useContext(ContextTheme)
 
-  // const Padrao =() => {
-  //   return (
-  //     <Todo justify = "center">Adicionar Tarefa</Todo>
-  //   )
-  // }
 
-  const handleCheck =({target}) =>{
-    setStatus(!status)
-    console.log(status)
-    console.log(target)
+
+  const handleSend =() => {
+
+    console.log(todoId)
   }
 
-
   return (
-    <TodoList theme={theme}>
+    <Ul theme={theme}>
       {todos && todos.length > 0 && 
       todos.map(({id,todo}) => (
-        <Todo key={id}>
+        <Li key={id}>
 
-          <InputCheck children={todo}/>
+        <InputCheck 
+        // onClick ={handleCheck}    
+        id={id}
+        value ={todo}
+        children={todo}/>
 
-          <ButtonDelete>X</ButtonDelete>
-
-        </Todo>
-          
-        // <></>
-      
-      )) || <Todo justify = "center">Adicionar Tarefa</Todo>
+        <ButtonDelete 
+        id={+id}
+          onClick ={handleSend}
+        >X</ButtonDelete>
+        
+        </Li>
+    
+      )) 
+      || <Li justify = "center">Adicionar Tarefa</Li>
       }
-    </TodoList>
+    </Ul>
 
 
   )

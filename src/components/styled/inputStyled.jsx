@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { css } from "styled-components"
+import { SpanCheckBorder } from "./checkStyled"
 
 
 
@@ -39,6 +40,7 @@ const InputCheckStyled = styled.input.attrs({
   type:"checkbox"
 })`
   opacity: 0;
+  position: absolute;
 
 `
 

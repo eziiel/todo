@@ -2,7 +2,7 @@
 import React from 'react'
 import { ContextTheme } from '../../context/contextTheme'
 import { HeaderTodo } from '../../styled/divStyled'
-import { CheckTheme } from '../../styled/spanStyled'
+import { CheckTheme } from '../../styled/checkStyled'
 // import moon from "../../../images/icon-moon-dark.svg"
 
 export const Header = () => {
