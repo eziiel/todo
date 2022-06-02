@@ -18,7 +18,7 @@ const MainDiv = styled.div`
   flex-direction: column;
   gap: ${pixelsToRem(32)};
 
-  background: var(--dark-blue2);
+  /* background: var(--dark-blue2); */
   background: transparent;
 
   @media (max-width: 650px) {

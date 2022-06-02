@@ -24,30 +24,31 @@ func acessDB() {
 	//drop if exists
 	fmt.Println("--Apagando tabela se ela existir")
 
-	_, errDrop := db.Exec("DROP TABLE IF EXISTS todo;")
+	_, errDrop := db.Exec("DROP TABLE IF EXISTS todolist;")
 	if errDrop != nil {
 		log.Println("error Drop:" + errDrop.Error())
 	}
 
 	//create table
 	fmt.Println("--criando Table")
-
+	
 	_, errCreate := db.Exec(
-		"CREATE TABLE todoList(" +
+		"CREATE TABLE todolist (" +
 		"id INT NOT NULL AUTO_INCREMENT," +
-		"todo VARCHAR(100) NOT NULL," +
-		"PRIMARY KEY(id)" +
+		"todo VARCHAR (100) NOT NULL," +
+		"PRIMARY KEY(`id`)" +
 		");",
 	)
 	if errCreate != nil {
 		log.Println("error Create:" + errDrop.Error())
 	}
+	
+	// fmt.Println("-----------------")
+	// _,errInsert := db.Exec("INSERT INTO todoList (todo) VALUES ('andar de bicicleta')")
 
-	_,errInsert := db.Exec("INSERT INTO todoList (todo) VALUES ('andar de bicicleta')")
-
-	if errInsert != nil {
-		log.Println("error Insert:" + errInsert.Error())
-	}
+	// if errInsert != nil {
+	// 	log.Println("error Insert:" + errInsert.Error())
+	// }
 
 }
 

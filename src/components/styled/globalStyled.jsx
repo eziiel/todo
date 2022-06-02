@@ -22,7 +22,7 @@ const GlobalStyled = createGlobalStyle`
 
 :root {
   --primary-color:#3a7bfd;
-  --background: linear-gradient #57ddff to #c058f3;
+  --background: linear-gradient(135deg,#57ddff, #c058f3);
   //dark theme
   --dark-blue : #161722;
   --dark-blue2: #25273c;

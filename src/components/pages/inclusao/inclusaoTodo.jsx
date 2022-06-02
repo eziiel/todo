@@ -2,34 +2,44 @@ import React, { useEffect } from 'react'
 import { Button } from '../utils/button'
 import { Input } from '../utils/input'
 import { InclusionCompoundForm } from '../../styled/formStyled'
+import { ContextTheme } from '../../context/contextTheme'
 
 export const InclusaoTodo = () => {
-  const [value, setValue] = React.useState("")
+  const {api} = React.useContext(ContextTheme)
+  const [todo, setTodo] = React.useState("")
   const [statusBtn, setStatusBtn] =React.useState(true)
 
   const handleInput =({target}) => {
-    setValue(target.value)
+    setTodo(target.value)
   }
   
   
   React.useEffect(()=>{
-    value.length > 0 ?setStatusBtn(false):setStatusBtn(true)
-  },[value])
-
+    todo.length > 0 ?setStatusBtn(false):setStatusBtn(true)
+  },[todo])
 
 
 
   const handleSend=(e)=>{
     e.preventDefault()
-    console.log("ativo")
+    
+      fetch(`${api}cadastrar`,{
+      method:"POST",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify({todo})
+    })
+    setTodo("")
   }
 
   return (
       <>
         <InclusionCompoundForm
+        aria-autocomplete='of'
         theme={handleInput}
         onSubmit={handleSend}
-        value = {value}
+        value = {todo}
         >
           <Input 
           onChange={handleInput}

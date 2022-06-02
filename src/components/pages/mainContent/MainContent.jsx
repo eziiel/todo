@@ -1,9 +1,9 @@
 import React from 'react'
 // import { ContextTheme } from '../../context/contextTheme'
 import { MainDiv } from '../../styled/divStyled'
-import { TodoList } from '../../styled/mainStyled'
 import { Header } from '../header/Header'
 import { InclusaoTodo } from '../inclusao/inclusaoTodo'
+import { Todolist } from '../todo/todolist'
 
 export const MainContent = () => {
   // const {theme} = React.useContext(ContextTheme)
@@ -16,7 +16,7 @@ export const MainContent = () => {
       
       <InclusaoTodo />
 
-      <TodoList />
+      <Todolist />
 
     </MainDiv>
   )

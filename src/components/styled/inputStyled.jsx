@@ -9,6 +9,7 @@ const InputText = styled.input.attrs({
   placeholder:"adicionar tarefa",
   type:"text"
 })`
+  font-size: 1.125rem;
   padding: 1rem;
   width: 100%;
   border-radius: 10px;
@@ -33,10 +34,17 @@ const InputText = styled.input.attrs({
     color: var(--dark-blue3);
   }
   `}    
-  
+`
+const InputCheckStyled = styled.input.attrs({
+  type:"checkbox"
+})`
+  opacity: 0;
+
 `
 
+
 export {
-  InputText
+  InputText,
+  InputCheckStyled
 
 }

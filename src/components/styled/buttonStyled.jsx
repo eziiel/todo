@@ -39,14 +39,26 @@ ${props => props.theme == true && css`
   }
   `}  
 `
+
+const ButtonDelete = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0 1rem;
+  color: var(--dark-blue3);
+  opacity: 0;
+`
   
 const ButtonSend = styled(Button)`
-  position: absolute;
-  
+  position: absolute; 
 `
+
 
 
 
 export {
   ButtonSend,
+  ButtonDelete,
+
 }
