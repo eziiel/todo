@@ -24,40 +24,36 @@ const ProviderContext = ({children}) => {
 
 
 
-  function validatorChecked (id) {
-    if(!marcados) return null
-    let value
+  // function validatorChecked (id) {
+  //   if(!marcados) return null
 
-    marcados.map(item => {
-      value = item.id ==id?false:true
-    })
-    return value
-  }
+  //   let res = marcados.every(item => {
+  //     item.id != id
+  //   })
+
+  //   return res
+  // }
 
 
-    // todoId && console.log(todoId)
-    React.useEffect(()=>{
+  //   // todoId && console.log(todoId)
+  //   React.useEffect(()=>{
 
-      todoId && todos &&
+  //     todoId && todos &&
 
-      todoId.map(itemT => {
-          todos.map(item => {
-              if(item.id == itemT){
-                marcados.map(itemM => {
-                  if(itemM.id != itemT) {
-                    setMarcados([...marcados,item])
-                  }
-                })
-              }
-          })
-        })
-    marcados && console.log(marcados)        
-    },[todoId])
+  //     todoId.map(itemT => {
+  //         todos.map(item => {
+  //             if(item.id == itemT && validatorChecked(itemT)){
+  //                   setMarcados([...marcados,item])
+  //             }
+  //         })
+  //       })
+  //   marcados && console.log(marcados)        
+  //   },[todoId])
 
 
 
   let data = {
-    theme, setTheme,todos,api,todoId,setTodoId,erroFetch,marcados,
+    theme, setTheme,todos,api,todoId,setTodoId,erroFetch,marcados,setMarcados
   }
 
   return (
