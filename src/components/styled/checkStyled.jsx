@@ -17,10 +17,10 @@ const CheckTheme = styled.span`
 
 const SpanCheck = styled.span`
   position: absolute;
-  left: -10%;
+  left: -8%;
   width: 25px;
   height:25px;
-  top: -40%;
+  top: -10%;
   background: var(--background);
   border-radius: 50%;
   /* border: 1px solid #fff; */
@@ -46,7 +46,8 @@ const LabelCheck = styled.label`
   cursor: pointer;
   position: relative;
   width: 100%;
-  height: 100%;
+  padding: .5rem;
+  /* height: 100%; */
   text-align: left;
   margin-left: 3rem;
   ${props => props.status == true && css`

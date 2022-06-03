@@ -52,6 +52,18 @@ const ButtonDelete = styled.button`
   
 const ButtonSend = styled(Button)`
   position: absolute; 
+  `
+
+
+
+const ButtonClearAll = styled(Button)`
+  font: var(--text2);
+  background-color: transparent;
+  border: none;
+  width: 150px;
+  ${props => props.theme == true && css`
+    color: var(--dark-blue);
+  `}
 `
 
 
@@ -60,5 +72,6 @@ const ButtonSend = styled(Button)`
 export {
   ButtonSend,
   ButtonDelete,
+  ButtonClearAll,
 
 }

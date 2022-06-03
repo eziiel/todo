@@ -42,6 +42,11 @@ const GlobalStyled = createGlobalStyle`
   --dark-blue-light2:#484b6a;
 
   
+  --text1: 600 ${pixelsToRem(14)} 'Karla', sans-serif 
+  --text2: 500 ${pixelsToRem(14)} 'Karla', sans-serif 
+  --text3: 400 ${pixelsToRem(14)} 'Karla', sans-serif 
+
+
 }
 
 body{

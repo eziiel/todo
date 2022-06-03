@@ -10,6 +10,8 @@ export const InputCheck = ({children,id, value,...props}) => {
   const {todoId, setTodoId} = React.useContext(ContextTheme)
 
 
+  // todoId && console.log(todoId)
+
   const handleId =({target}) =>{
     if(target.checked) {
       setTodoId([...todoId,target.id])

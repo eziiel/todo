@@ -22,8 +22,9 @@ const Li = styled.li`
   display: flex;
   justify-content: ${props => props.justify? "center": "space-between"};
   align-items: center;
+  align-content: center;
   border-bottom: 1px solid var(--light-blue);
-  padding: 1rem;
+  padding: .5rem;
   ${props => props.theme == true && css`
     border-bottom: 1px solid var(--dark-blue2);
     font-weight:bold;
