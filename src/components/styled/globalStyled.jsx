@@ -1,15 +1,8 @@
+import { css } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-import React from "react"
-import { css } from "styled-components"
-import { createGlobalStyle } from "styled-components"
-import { ContextTheme } from "../context/contextTheme"
-// import styled from "styled-components"
-
-
-function pixelsToRem (...values) {
-  return values
-      .reduce((a,i) => (a += i/16 + `rem `),"")
-      .trim();
+function pixelsToRem(...values) {
+  return values.reduce((a, i) => (a += i / 16 + `rem `), "").trim();
 }
 
 const GlobalStyled = createGlobalStyle`
@@ -54,15 +47,13 @@ body{
   background: var(--dark-blue)
 }
 
-${props => props.theme == true && css`
-  body{
-    background: var( --light3)
-  }
+${(props) =>
+  props.theme == true &&
+  css`
+    body {
+      background: var(--light3);
+    }
+  `}
+`;
 
-`}
-`
-
-
-export {
-  GlobalStyled
-}
+export { GlobalStyled };

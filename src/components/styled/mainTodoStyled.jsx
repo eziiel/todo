@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { css } from "styled-components";
 
 // function pixelsToRem (...values) {
@@ -14,38 +14,32 @@ const TodoList = styled.main`
   display: flex;
   flex-direction: column;
   color: var(--light);
-  ${props => props.theme == true && css`
-    background: var(--light);
-    color: var(--dark-blue) ;
-`}
-`
+  ${(props) =>
+    props.theme == true &&
+    css`
+      background: var(--light);
+      color: var(--dark-blue);
+    `}
+`;
 
 const Todo = styled.div`
   position: relative;
   display: flex;
-  justify-content: ${props => props.justify? "center": "space-between"};
+  justify-content: ${(props) => (props.justify ? "center" : "space-between")};
   align-items: center;
   /* border-bottom: 1px solid var(--light-blue); */
   padding: 1rem;
   color: var(--light);
-  ${props => props.theme == true && css`
-  /* border-bottom: 1px solid var(--dark-blue2); */
-    color: var(--dark-blue);
-    font-weight:bold;
-  `}
+  ${(props) =>
+    props.theme == true &&
+    css`
+      /* border-bottom: 1px solid var(--dark-blue2); */
+      color: var(--dark-blue);
+      font-weight: bold;
+    `}
   :hover button {
     opacity: 1;
   }
-  `
+`;
 
-  const TodoFooter = styled.div`
-
-  `
- 
-
-export {
-  TodoList,
-  Todo,
-  TodoFooter,
-  
-}
+export { TodoList, Todo };

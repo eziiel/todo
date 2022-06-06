@@ -4,8 +4,6 @@ import (
 	"database/sql"
 	"encoding/json"
 	"io/ioutil"
-
-	// "fmt"
 	"log"
 	"net/http"
 
@@ -25,7 +23,6 @@ var db *sql.DB
 type MensagemErro struct {
 	Erro string `json:"erro"`
 }
-//---------------------------=-=-=---------=-=-=-=====================
 func home(w http.ResponseWriter, r *http.Request) {
 
 	registro, erroR := db.Query("SELECT id,todo FROM todolist;")
@@ -66,7 +63,6 @@ func Cadastrar(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(MensagemErro{"erro em campo de todo: 0 < item < 100 caracters "})
 		return
 	}
-	// fmt.Println("------------------------>", novoTodo)
 
 	_, errInsert := db.Exec("INSERT INTO todolist (todo) VALUES ( ? )", novoTodo.Todo)
 	if errInsert != nil {
@@ -79,11 +75,29 @@ func Cadastrar(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(novoTodo)
 }
 
+//function excluir 
+func excluir(w http.ResponseWriter, r*http.Request) {
+
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	_, erroExec := db.Exec("DELETE FROM todolist WHERE id = ?", id)
+
+	if erroExec != nil {
+		log.Println("erro em exclusao: " + erroExec.Error())
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+}
+
+
+
 func router() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", home).Methods("GET")
 	r.HandleFunc("/cadastrar", Cadastrar).Methods("POST")
+	r.HandleFunc("/excluir/{id}", excluir).Methods("DELETE")
 
 	headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
 	methods := handlers.AllowedMethods([]string{"GET", "DELETE", "POST", "PUT", "OPTIONS"})

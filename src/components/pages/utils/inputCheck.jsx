@@ -1,61 +1,46 @@
+import React from "react";
+import { ContextTheme } from "../../context/contextTheme";
+import {
+  LabelCheck,
+  SpanCheck,
+  SpanCheckBorder,
+} from "../../styled/checkStyled";
+import { InputCheckStyled } from "../../styled/inputStyled";
 
-import React from 'react'
-import { ContextTheme } from '../../context/contextTheme'
-import { LabelCheck, SpanCheck, SpanCheckBorder } from '../../styled/checkStyled'
-import { InputCheckStyled } from '../../styled/inputStyled'
+export const InputCheck = ({ children, id, value, status,...props }) => {
+  const {theme} = React.useContext(ContextTheme)
 
-export const InputCheck = ({children,id, value,...props}) => {
-  const [status, setStatus] = React.useState(false)
-  // const [statusCheck, setStatusCheck] = React.useState([])
-  const {todos,todoId, setTodoId,marcados,setMarcados} = React.useContext(ContextTheme)
+  const {
+    todoId,
+    setTodoId,
+  } = React.useContext(ContextTheme);
 
+  const handleId = ({ target }) => {
+    let todoForId = []
 
-  // todoId && console.log(todoId)
-
-  const handleId =({target}) =>{
-    if(target.checked) {
-      setTodoId([...todoId,target.id])
-      setMarcados([...marcados, todos[id-1]])
+    if (target.checked) {
+      todoForId = [...todoId,target.id]
+      setTodoId(todoForId.filter((a,i) => todoForId.indexOf(a) === i))
     } else {
-      setTodoId(todoId.filter((item) => item !== target.id))
-      setMarcados(marcados.filter((item) => item.id !=target.id))
+      setTodoId(todoId.filter((item) => item !== target.id));
     }
-  }
-  
-  const handleCheck =({target}) =>{
-    if(target.checked) {
-      setStatus(true)
-    } else {
-      setStatus(false)
-    }
-  }
+  };
 
   return (
     <>
-          <LabelCheck
-          status = {status}
-          value = {value}
-          id={id}
-          {...props}
-          >  
+      <LabelCheck status={status} value={value} id={id} {...props}>
+        <SpanCheck>
+          <SpanCheckBorder theme={theme} status={status}></SpanCheckBorder>
+        </SpanCheck>
 
-          <SpanCheck>
-            <SpanCheckBorder
-              status = {status}
-            ></SpanCheckBorder>
-          </SpanCheck>
+        {children}
 
-               {children}
-      
-          <InputCheckStyled
+        <InputCheckStyled
           id={id}
-          status = {status}
-          onClick={handleCheck}
+          status={status}
           onChange={handleId}
-          />
-    </LabelCheck>
-    
+        />
+      </LabelCheck>
     </>
- 
-  )
-}
+  );
+};

@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { css } from "styled-components"
+import styled from "styled-components";
+import { css } from "styled-components";
 
 const Ul = styled.ul`
   list-style: none;
@@ -8,36 +8,34 @@ const Ul = styled.ul`
   display: flex;
   flex-direction: column;
   color: var(--light);
-  ${props => props.theme == true && css`
-    background-color: var(--light);
-    color: var(--dark-blue) ;
+  ${(props) =>
+    props.theme == true &&
+    css`
+      background-color: var(--light);
+      color: var(--dark-blue);
     `}
-    li label input:checked span{
-      background: blue;
-    }
-`
+  li label input:checked span {
+    background: blue;
+  }
+`;
 
 const Li = styled.li`
   position: relative;
   display: flex;
-  justify-content: ${props => props.justify? "center": "space-between"};
+  justify-content: ${(props) => (props.justify ? "center" : "space-between")};
   align-items: center;
   align-content: center;
   border-bottom: 1px solid var(--light-blue);
-  padding: .5rem;
-  ${props => props.theme == true && css`
-    border-bottom: 1px solid var(--dark-blue2);
-    font-weight:bold;
-  `}
+  padding: 0.5rem;
+  ${(props) =>
+    props.theme == true &&
+    css`
+      border-bottom: 1px solid var(--dark-blue2);
+      font-weight: bold;
+    `}
   :hover button {
     opacity: 1;
   }
+`;
 
-`
-
-export {
-  Ul,
-  Li,
-
-
-}
+export { Ul, Li };

@@ -1,11 +1,8 @@
-import styled from "styled-components"
-
+import styled from "styled-components";
 
 //func to rem
-function pixelsToRem (...values) {
-  return values
-      .reduce((a,i) => (a += i/16 + `rem `),"")
-      .trim();
+function pixelsToRem(...values) {
+  return values.reduce((a, i) => (a += i / 16 + `rem `), "").trim();
 }
 
 //maindiv
@@ -25,7 +22,7 @@ const MainDiv = styled.div`
     width: ${pixelsToRem(300)};
     height: ${pixelsToRem(500)};
   }
-`
+`;
 
 //header
 const HeaderTodo = styled.div`
@@ -34,12 +31,7 @@ const HeaderTodo = styled.div`
   font-size: 2rem;
   font-weight: bold;
   color: var(--light);
-`
+`;
+const FooterTodo = styled(HeaderTodo)``;
 
-
-
-export {
-  MainDiv,
-  HeaderTodo,
-
-}
+export { MainDiv, HeaderTodo, FooterTodo };
