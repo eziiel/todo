@@ -38,6 +38,8 @@ export const Todolist = () => {
   };
 
   const handleMarc = () => {
+    if (todoId.length <= 0) return
+
     fetch(`${api}/excluirgeral/${todoId}`,{
       method: "DELETE" 
     })
