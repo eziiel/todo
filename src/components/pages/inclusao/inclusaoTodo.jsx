@@ -3,9 +3,10 @@ import { Button } from "../utils/button";
 import { Input } from "../utils/input";
 import { InclusionCompoundForm } from "../../styled/formStyled";
 import { ContextTheme } from "../../context/contextTheme";
+import { TodoList } from "../../styled/mainTodoStyled";
 
 export const InclusaoTodo = () => {
-  const { api } = React.useContext(ContextTheme);
+  const { api,todos, setTodos } = React.useContext(ContextTheme);
   const [todo, setTodo] = React.useState("");
   const [statusBtn, setStatusBtn] = React.useState(true);
 
@@ -20,6 +21,16 @@ export const InclusaoTodo = () => {
   const handleSend = (e) => {
     e.preventDefault();
     
+
+    let id = todos.length > 0? todos[todos.length -1].id : 0
+
+    let novoTodo  = {
+      id : id +1,
+      todo : todo
+    }
+
+    setTodos([...todos,novoTodo])
+
     fetch(`${api}cadastrar`, {
       method: "POST",
       headers: {

@@ -6,11 +6,11 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	// "github.com/todo/cadastro"
 )
 
 type Todo struct {
@@ -23,6 +23,7 @@ var db *sql.DB
 type MensagemErro struct {
 	Erro string `json:"erro"`
 }
+
 func home(w http.ResponseWriter, r *http.Request) {
 
 	registro, erroR := db.Query("SELECT id,todo FROM todolist;")
@@ -75,8 +76,8 @@ func Cadastrar(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(novoTodo)
 }
 
-//function excluir 
-func excluir(w http.ResponseWriter, r*http.Request) {
+//function excluir
+func excluir(w http.ResponseWriter, r *http.Request) {
 
 	vars := mux.Vars(r)
 	id := vars["id"]
@@ -90,7 +91,30 @@ func excluir(w http.ResponseWriter, r*http.Request) {
 	}
 }
 
+func excluirGeral(w http.ResponseWriter, r *http.Request) {
 
+	vars := mux.Vars(r)
+	ids,_ := vars["id"]
+
+
+	id :=strings.ReplaceAll(ids,","," ")
+	response := strings.Fields(id)
+
+
+
+	for _, item := range response {
+
+		_, erroExec := db.Exec("DELETE FROM todolist WHERE id = ?", item)
+
+		if erroExec != nil {
+			log.Println("erro em exclusao: " + erroExec.Error())
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+	}
+
+}
 
 func router() {
 	r := mux.NewRouter()
@@ -98,6 +122,7 @@ func router() {
 	r.HandleFunc("/", home).Methods("GET")
 	r.HandleFunc("/cadastrar", Cadastrar).Methods("POST")
 	r.HandleFunc("/excluir/{id}", excluir).Methods("DELETE")
+	r.HandleFunc("/excluirgeral/{id}", excluirGeral).Methods("DELETE")
 
 	headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
 	methods := handlers.AllowedMethods([]string{"GET", "DELETE", "POST", "PUT", "OPTIONS"})

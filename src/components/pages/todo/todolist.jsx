@@ -17,6 +17,7 @@ export const Todolist = () => {
     setTodoId,
     erroFetch,
     marcados,
+    setMarcados,
     desmarcados,
   } = React.useContext(ContextTheme);
   const [list, setList] = React.useState();
@@ -32,24 +33,27 @@ export const Todolist = () => {
       method : "DELETE",
     })
         
-    console.log(todos)
     setTodoId(todoId.filter(item => item != e.target.id))
     setTodos(todos.filter(item => item.id != e.target.id))
-    console.log(todos)
   };
 
   const handleMarc = () => {
-    ///seter Tdudo
-    console.log(todos)
-    console.log(marcados)
-    console.log(desmarcados)
+    fetch(`${api}/excluirgeral/${todoId}`,{
+      method: "DELETE" 
+    })
+
+    setTodoId([])
+    setMarcados([])
+    setTodos(desmarcados)
   };
 
   const handleList = ({ target }) => {
     if (target.id == "all") {
       setList(todos);
     } else if (target.id == "active") {
-      setList(desmarcados);
+      desmarcados.length>0?
+      setList(desmarcados):
+      setList(todos)
     } else if (target.id == "completed") {
       setList(marcados);
     }

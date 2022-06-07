@@ -17,12 +17,13 @@ export const InputCheck = ({ children, id, value, status,...props }) => {
 
   const handleId = ({ target }) => {
     let todoForId = []
+    let n = +target.id
 
     if (target.checked) {
-      todoForId = [...todoId,target.id]
+      todoForId = [...todoId,n]
       setTodoId(todoForId.filter((a,i) => todoForId.indexOf(a) === i))
     } else {
-      setTodoId(todoId.filter((item) => item !== target.id));
+      setTodoId(todoId.filter((item) => item !== n));
     }
   };
 
