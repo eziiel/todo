@@ -24,7 +24,7 @@ export const Todolist = () => {
 
   React.useEffect(() => {
     setList(todos);
-  }, [todos, marcados]);
+  }, [todos]);
 
   const handleSend = (e) => {
     const todo = e.target.id
@@ -46,6 +46,7 @@ export const Todolist = () => {
     setMarcados([])
     setTodos(desmarcados)
   };
+
 
   const handleList = ({ target }) => {
     if (target.id == "all") {
