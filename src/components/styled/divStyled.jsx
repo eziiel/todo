@@ -32,6 +32,14 @@ const HeaderTodo = styled.div`
   font-weight: bold;
   color: var(--light);
 `;
-const FooterTodo = styled(HeaderTodo)``;
+const FooterTodo = styled(HeaderTodo)`
+    @media (max-width:650px) {
+      grid-row: 2;
+      grid-column: 1/-1;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+`;
 
 export { MainDiv, HeaderTodo, FooterTodo };

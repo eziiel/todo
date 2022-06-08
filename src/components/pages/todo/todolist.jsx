@@ -49,6 +49,7 @@ export const Todolist = () => {
     setTodos(desmarcados)
   };
 
+  // const tamanho = window
 
   const handleList = ({ target }) => {
     if (target.id == "all") {
@@ -61,6 +62,8 @@ export const Todolist = () => {
       setList(marcados);
     }
   };
+
+
 
   return (
     <TodoList theme={theme}>
@@ -111,7 +114,7 @@ export const Todolist = () => {
           </ButtonFooter>
         </FooterTodo>
 
-        <ButtonFooter width="150px" onClick={handleMarc} theme={theme} fw="bold">
+        <ButtonFooter list="true" width="150px" onClick={handleMarc} theme={theme} fw="bold">
           Clear Completed
         </ButtonFooter>
       </Todo>

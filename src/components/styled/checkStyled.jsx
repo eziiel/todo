@@ -25,6 +25,11 @@ const SpanCheck = styled.span`
   background: var(--background);
   border-radius: 50%;
   margin: 0.5rem;
+
+
+  @media (max-width:650px) {
+    left: -20%;
+  }
 `;
 const SpanCheckBorder = styled(SpanCheck)`
   position: absolute;
@@ -45,6 +50,8 @@ const SpanCheckBorder = styled(SpanCheck)`
       background: url(${check}) center no-repeat;
       background-size: 1rem;
     `}
+
+
 `;
 const LabelCheck = styled.label`
   cursor: pointer;
@@ -59,6 +66,12 @@ const LabelCheck = styled.label`
     css`
       text-decoration: line-through;
     `}
+
+
+    @media (max-width:650px) {
+      margin-left: 2.5rem;
+      font-size: .875rem;
+    }
 `;
 
 export { CheckTheme, SpanCheck, SpanCheckBorder, LabelCheck };

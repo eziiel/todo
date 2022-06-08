@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "../utils/button";
 import { Input } from "../utils/input";
 import { InclusionCompoundForm } from "../../styled/formStyled";
 import { ContextTheme } from "../../context/contextTheme";
-import { TodoList } from "../../styled/mainTodoStyled";
 
 export const InclusaoTodo = () => {
   const { api,todos, setTodos } = React.useContext(ContextTheme);

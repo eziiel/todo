@@ -34,6 +34,12 @@ const Button = styled.button`
       ::placeholder {
       }
     `}
+
+  @media (max-width:650px) {
+    font-size:.875rem;
+    width: auto;
+    padding: 0 1rem;
+  }
 `;
 
 const ButtonDelete = styled.button`
@@ -67,6 +73,20 @@ const ButtonFooter = styled(Button)`
     css`
       color: var(--dark-blue);
     `}
+
+  ${(props) =>
+    props.list && css`
+     
+      @media (max-width:650px) {
+        font-size: .875rem;
+        text-align: right;
+        padding: 0;
+      }
+
+    `}
+   
+   
+
 `;
 
 export { ButtonSend, ButtonDelete, ButtonFooter };
