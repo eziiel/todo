@@ -132,8 +132,12 @@ func router() {
 }
 
 func acessDB() {
+	user := "xxxxxxx"
+	passWord := "xxxxxxx"
+	dataName := "xxxxxxx"
+	
 	var errAbertura error
-	db, errAbertura = sql.Open("mysql", "eziel:ezielEZIEL-10@tcp(localhost:3306)/todo")
+	db, errAbertura := sql.Open("mysql", user+passWord+"@tcp(localhost:3306)/"+dataName)
 	if errAbertura != nil {
 		log.Fatal(errAbertura.Error())
 	}

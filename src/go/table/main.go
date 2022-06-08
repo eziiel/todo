@@ -11,8 +11,12 @@ import (
 func acessDB() {
 	//acess database
 	fmt.Println("--criando e inserindo dados na tabela")
+	
+	user := "xxxxxxx"
+	passWord := "xxxxxxx"
+	dataName := "xxxxxxx"
 
-	db, erroAccess := sql.Open("mysql", "eziel:ezielEZIEL-10@tcp(localhost:3306)/todo")
+	db, erroAccess := sql.Open("mysql", user+passWord+"@tcp(localhost:3306)/"+dataName)
 	if erroAccess != nil {
 		log.Println("erro em acesso:" + erroAccess.Error())
 	}
@@ -43,12 +47,11 @@ func acessDB() {
 		log.Println("error Create:" + errDrop.Error())
 	}
 	
-	// fmt.Println("-----------------")
-	// _,errInsert := db.Exec("INSERT INTO todoList (todo) VALUES ('andar de bicicleta')")
+	_,errInsert := db.Exec("INSERT INTO todoList (todo) VALUES ('run')")
 
-	// if errInsert != nil {
-	// 	log.Println("error Insert:" + errInsert.Error())
-	// }
+	if errInsert != nil {
+		log.Println("error Insert:" + errInsert.Error())
+	}
 
 }
 
