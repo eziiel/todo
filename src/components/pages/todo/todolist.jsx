@@ -111,7 +111,7 @@ export const Todolist = () => {
           </ButtonFooter>
         </FooterTodo>
 
-        <ButtonFooter width="150px" onClick={handleMarc} theme={theme}>
+        <ButtonFooter width="150px" onClick={handleMarc} theme={theme} fw="bold">
           Clear Completed
         </ButtonFooter>
       </Todo>

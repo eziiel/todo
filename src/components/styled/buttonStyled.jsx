@@ -52,11 +52,16 @@ const ButtonSend = styled(Button)`
 
 const ButtonFooter = styled(Button)`
   font: var(--text2);
+  color: var(--dark-blue-light) ;
   font-size: 1rem;
+  font-weight: ${(props) => props.fw};
   padding: ${(props) => props.padding};
   background-color: transparent;
   border: none;
   width: ${(props) => props.width};
+  :hover,:focus,::after{
+    color: var(--light);
+  }
   ${(props) =>
     props.theme == true &&
     css`
